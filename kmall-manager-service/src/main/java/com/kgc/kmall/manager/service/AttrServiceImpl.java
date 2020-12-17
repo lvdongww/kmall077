@@ -38,7 +38,7 @@ public class AttrServiceImpl implements AttrService{
         int i=0;
         if (attrInfo.getId()==null){
             //添加
-            i = pmsBaseAttrInfoMapper.insertSelective(attrInfo);
+            i = pmsBaseAttrInfoMapper.insert(attrInfo);
         }else{
             //修改
             i=pmsBaseAttrInfoMapper.updateByPrimaryKey(attrInfo);
