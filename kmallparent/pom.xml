@@ -21,6 +21,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <mybatis.version>2.1.2</mybatis.version>
     <dubbo.version>2.7.1</dubbo.version>
+    <io.version>2.4</io.version>
   </properties>
 
   <dependencyManagement>
@@ -52,7 +53,13 @@
         <artifactId>mybatis-spring-boot-starter</artifactId>
         <version>${mybatis.version}</version>
       </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${io.version}</version>
+      </dependency>
     </dependencies>
+
   </dependencyManagement>
 
   <build>
