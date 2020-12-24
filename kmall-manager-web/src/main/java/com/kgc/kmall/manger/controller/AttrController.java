@@ -23,7 +23,8 @@ public class AttrController {
 
     @RequestMapping("/attrInfoList")
     public List<PmsBaseAttrInfo> attrInfos(Long catalog3Id) {
-        return attrService.select(catalog3Id);
+        List<PmsBaseAttrInfo> select = attrService.select(catalog3Id);
+        return select;
     }
     @RequestMapping("/saveAttrInfo")
     public Integer saveAttrInfo(@RequestBody PmsBaseAttrInfo attrInfo){

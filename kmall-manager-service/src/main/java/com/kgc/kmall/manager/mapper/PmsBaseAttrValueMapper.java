@@ -29,4 +29,6 @@ public interface PmsBaseAttrValueMapper {
     int updateByPrimaryKey(PmsBaseAttrValue record);
 
     int insertBatch(@Param("attrId") Long attrId,@Param("valueList") List<PmsBaseAttrValue> valueList);
+
+    List<PmsBaseAttrValue> selectAttrValue(Integer id);
 }

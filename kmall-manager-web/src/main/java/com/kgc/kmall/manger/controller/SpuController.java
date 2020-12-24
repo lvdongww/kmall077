@@ -1,7 +1,9 @@
 package com.kgc.kmall.manger.controller;
 
 import com.kgc.kmall.bean.PmsBaseSaleAttr;
+import com.kgc.kmall.bean.PmsProductImage;
 import com.kgc.kmall.bean.PmsProductInfo;
+import com.kgc.kmall.bean.PmsProductSaleAttr;
 import com.kgc.kmall.service.SpuService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.dubbo.config.annotation.Reference;
@@ -45,7 +47,7 @@ public class SpuController {
     public String fileUpload(@RequestParam("file")MultipartFile file) throws IOException, MyException {
         //文件上传
         //返回文件上传后的路径
-        String imgUrl=fileUrl;
+        String imgUrl="http://"+fileUrl;
         if(file!=null){
             System.out.println("multipartFile = " + file.getName()+"|"+file.getSize());
             String configFile = this.getClass().getResource("/tracker.conf").getFile();
@@ -67,6 +69,17 @@ public class SpuController {
     }
     @RequestMapping("/saveSpuInfo")
     public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo){
+        spuService.saveSpuInfo(pmsProductInfo);
         return "success";
+    }
+    @RequestMapping("/spuSaleAttrList")
+    public List<PmsProductSaleAttr> spuSaleAttrList(Long spuId){
+        List<PmsProductSaleAttr> pmsProductSaleAttrList=spuService.spuSaleAttrList(spuId);
+        return pmsProductSaleAttrList;
+    }
+    @RequestMapping("/spuImageList")
+    public List<PmsProductImage> spuImageList(Long spuId){
+        List<PmsProductImage> pmsProductImageList = spuService.spuImageList(spuId);
+        return pmsProductImageList;
     }
 }

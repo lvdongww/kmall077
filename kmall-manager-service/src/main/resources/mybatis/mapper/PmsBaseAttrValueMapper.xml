@@ -7,6 +7,9 @@
     <result column="attr_id" property="attrId" jdbcType="BIGINT" />
     <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="selectAttrValue" resultMap="BaseResultMap">
+      SELECT * FROM pms_base_attr_value where attr_id=#{id}
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
