@@ -20,4 +20,5 @@ public interface SpuService {
     List<PmsProductSaleAttr> spuSaleAttrList(Long spuId);
 
     List<PmsProductImage> spuImageList(Long spuId);
+    List<PmsProductSaleAttr> spuSaleAttrListIsCheck(Long spuId,Long skuId);
 }

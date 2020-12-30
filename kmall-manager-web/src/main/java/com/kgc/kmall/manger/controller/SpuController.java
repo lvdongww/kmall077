@@ -47,7 +47,7 @@ public class SpuController {
     @RequestMapping("/baseSaleAttrList")
     public List<PmsBaseSaleAttr> baseSaleAttrList(){
         List<PmsBaseSaleAttr> saleAttrList = spuService.baseSaleAttrList();
-        return saleAttrList;
+        return  saleAttrList;
     }
 
     @ApiOperation(value = "添加spu照片",httpMethod = "POST")
@@ -67,7 +67,6 @@ public class SpuController {
             String filename=    file.getOriginalFilename();
             String extName = FilenameUtils.getExtension(filename);
             String[] upload_file = storageClient.upload_file(file.getBytes(), extName, null);
-            imgUrl=fileUrl ;
             for (int i = 0; i < upload_file.length; i++) {
                 String path = upload_file[i];
                 imgUrl+="/"+path;
@@ -80,7 +79,7 @@ public class SpuController {
     @ApiImplicitParam(name = "pmsProductInfo",value = "spu对象")
     @RequestMapping("/saveSpuInfo")
     public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo){
-        spuService.saveSpuInfo(pmsProductInfo);
+        Integer integer = spuService.saveSpuInfo(pmsProductInfo);
         return "success";
     }
     @ApiOperation(value = "添加sku查询销售属性",httpMethod = "POST")

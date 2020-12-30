@@ -75,7 +75,9 @@ public class SpuServiceImpl implements SpuService {
         List<PmsProductSaleAttr> pmsProductSaleAttrs = pmsProductSaleAttrMapper.selectByExample(example);
         for (PmsProductSaleAttr pmsProductSaleAttr : pmsProductSaleAttrs) {
             PmsProductSaleAttrValueExample example1=new PmsProductSaleAttrValueExample();
-            example1.createCriteria().andSaleAttrIdEqualTo(pmsProductSaleAttr.getSaleAttrId());
+            PmsProductSaleAttrValueExample.Criteria criteria = example1.createCriteria();
+            criteria.andProductIdEqualTo(pmsProductSaleAttr.getProductId());
+            criteria.andSaleAttrIdEqualTo(pmsProductSaleAttr.getSaleAttrId());
             List<PmsProductSaleAttrValue> pmsProductSaleAttrValues = pmsProductSaleAttrValueMapper.selectByExample(example1);
             pmsProductSaleAttr.setSpuSaleAttrValueList(pmsProductSaleAttrValues);
         }
@@ -88,6 +90,11 @@ public class SpuServiceImpl implements SpuService {
         pmsProductImageExample.createCriteria().andProductIdEqualTo(spuId);
         List<PmsProductImage> pmsProductImages = pmsProductImageMapper.selectByExample(pmsProductImageExample);
         return pmsProductImages;
+    }
+
+    @Override
+    public List<PmsProductSaleAttr> spuSaleAttrListIsCheck(Long spuId, Long skuId) {
+        return pmsProductSaleAttrMapper.spuSaleAttrListIsCheck(spuId,skuId);
     }
 
 }
