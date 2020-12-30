@@ -1006,6 +1006,8 @@
 			<img src="/img/44.png" />
 			<span>购物车还没有商品，赶紧选购吧！</span>
 		</div>
+
+		<input type = "hidden" th:value="${skuSaleAttrHashJsonStr}" id="valuesSku"/>
 	</body>
 
 	<script src="/js/jquery1.9.js" type="text/javascript" charset="utf-8"></script>
@@ -1018,7 +1020,6 @@
             }
             $("#itemForm").submit();
         }
-
         function switchSkuId() {
             // 被选中属性
             var checkDivs = $(".redborder div");
@@ -1026,10 +1027,8 @@
             // 拼接成属性值串
             for (var i = 0; i < checkDivs.length; i++) {
                 var saleAttrValueDiv = checkDivs.eq(i);
-                if(i>0){
-                    valueIds= valueIds+"|";
-                }
-                valueIds=valueIds+saleAttrValueDiv.attr("value");
+
+                valueIds=valueIds+saleAttrValueDiv.attr("value")+"|";
             }
             //页面上的hashjson
             var valuesSku = $("#valuesSku").attr("value");
@@ -1039,6 +1038,7 @@
             var skuId= valuesSkuJson[valueIds];
             // 当前sku
             var skuIdSelf=$("#skuId").val();
+			console.log(valueIds)
 
             // 判断是否跳转
             if(skuId){

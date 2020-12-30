@@ -11,5 +11,7 @@ import java.util.List;
 public interface SkuService {
      String saveSkuInfo(PmsSkuInfo skuInfo);
 
-        PmsSkuInfo selectBySkuId(Long skuId);
+     PmsSkuInfo selectBySkuId(Long skuId);
+
+     List<PmsSkuInfo> selectBySpuId(Long spuId);
 }
